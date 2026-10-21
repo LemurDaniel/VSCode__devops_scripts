@@ -6,7 +6,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.0.6]
 
-- Fixed errors on login button.
+- Fixed login: the interactive sign-in was not triggered, requests could hang on unparsable responses.
+- Fixed missing default for the selected organization.
+- Removed creating and merging Pull Requests from the extension (use Azure DevOps).
 - Updated dev dependencies and tooling.
 
 ## [0.0.5]

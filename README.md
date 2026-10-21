@@ -1,3 +1,5 @@
+> 🤖 **AI Notice:** Originally written by hand, with love, sweat and an unreasonable amount of `console.log`. Resurrected in 2026 with the help of an AI, which fixed the bugs, deleted the dead code and politely refused to judge the original variable names.
+
 # Azure DevOps Overview
 
 > Early-stage extension, so you may run into errors.

@@ -2,14 +2,18 @@
 
 All notable changes to the "devopsscripts" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+The format follows [Keep a Changelog](http://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/) (while below 1.0.0, minor/patch bumps may include breaking changes).
 
-## [0.0.6]
+## [0.0.7]
 
-- Fixed login: the interactive sign-in was not triggered, requests could hang on unparsable responses.
+- Fixed login: the interactive sign-in was not triggered and requests could hang on unparsable responses.
 - Fixed missing default for the selected organization.
 - Removed creating and merging Pull Requests from the extension (use Azure DevOps).
 - Updated dev dependencies and tooling.
+
+## [0.0.6]
+
+- Fixed errors on login button.
 
 ## [0.0.5]
 

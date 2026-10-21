@@ -18,9 +18,11 @@ jobs:
         with:
           node-version: "20.x"
 
-      - run: npm install
+      - run: npm ci
 
-      - run: npm install -g @vscode/vsce
+      - run: npm run lint
+
+      - run: npm run test:unit
 
       - name: Publish extension
-        run: vsce publish --pat ${{ env.PAT }}
+        run: npx --yes @vscode/vsce publish --pat ${{ env.PAT }}

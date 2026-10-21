@@ -1,4 +1,5 @@
 {
+	"ignorePatterns": ["dist/", "node_modules/", ".vscode-test/", ".portable/"],
 	"env": {
 		"browser": false,
 		"commonjs": true,

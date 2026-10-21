@@ -4,7 +4,7 @@
   "description": "VSCode integrated Overiew for managing Projects, Pipelines and Repositories in Azure DevOps.",
   "author": "LemurDaniel",
   "publisher": "LemurDaniel",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/LemurDaniel/PROJECT__VSCode_devops_scripts"
@@ -30,6 +30,13 @@
           "default": "{{HOME_DIR}}/git/repos/",
           "editPresentation": "singlelineText",
           "description": "Path where all Projects an Repositories will be downloaded. (Defaults to '{{HOME_DIR}}/git/repos/')"
+        },
+        "devops.recent_builds_count": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 50,
+          "description": "Number of recent builds shown per pipeline, including builds not started from this extension."
         },
         "devops.set_local_git_user": {
           "type": "boolean",

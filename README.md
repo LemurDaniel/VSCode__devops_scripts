@@ -1,6 +1,6 @@
 # Azure DevOps Overview
 
-`This is a prototype test-Extension, wich may run into errors!`
+> Early-stage extension, so you may run into errors.
 
 VSCode integrated Overiew for managing Projects, Pipelies and Repositories in Azure DevOps:
 

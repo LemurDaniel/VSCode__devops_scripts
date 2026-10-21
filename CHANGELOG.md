@@ -4,6 +4,11 @@ All notable changes to the "devopsscripts" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.6]
+
+- Fixed errors on login button.
+- Updated dev dependencies and tooling.
+
 ## [0.0.5]
 
 - Added login button, to force new login prompt.

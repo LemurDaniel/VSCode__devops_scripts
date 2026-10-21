@@ -29,9 +29,8 @@ function activate(context) {
 
 }
 // This method is called when your extension is deactivated
-function deactivate(context) {
-    context.subscriptions.forEach(disposable => disposable.dispose())
-}
+// Disposables are registered in context.subscriptions and are disposed by VS Code itself.
+function deactivate() { }
 
 async function changeProjectPath() {
     try {

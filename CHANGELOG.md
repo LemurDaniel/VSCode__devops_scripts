@@ -4,6 +4,12 @@ All notable changes to the "devopsscripts" extension will be documented in this 
 
 The format follows [Keep a Changelog](http://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/) (while below 1.0.0, minor/patch bumps may include breaking changes).
 
+## [1.0.1]
+
+### Fixed
+
+- Re-release of 1.0.0: the Marketplace CDN answered CORS preflight requests for the 1.0.0 assets with HTTP 500, so the extension details page failed to load in VSCode.
+
 ## [1.0.0]
 
 ### Added

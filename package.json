@@ -5,7 +5,7 @@
   "author": "LemurDaniel",
   "publisher": "LemurDaniel",
   "icon": ".resources/icon.png",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/LemurDaniel/VSCode__devops_scripts"

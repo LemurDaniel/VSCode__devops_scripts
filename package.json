@@ -4,7 +4,8 @@
   "description": "VSCode integrated Overiew for managing Projects, Pipelines and Repositories in Azure DevOps.",
   "author": "LemurDaniel",
   "publisher": "LemurDaniel",
-  "version": "1.0.1",
+  "icon": ".resources/icon.png",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/LemurDaniel/VSCode__devops_scripts"
@@ -72,7 +73,7 @@
         {
           "id": "devopsscripts",
           "title": "DevOps Scripts",
-          "icon": ".resources/azure_devops.png"
+          "icon": ".resources/activitybar.svg"
         }
       ]
     },
@@ -355,7 +356,6 @@
     "webpack": "^5.81.0",
     "webpack-cli": "^5.0.2"
   },
-  "icon": ".resources/azure_devops.png",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LemurDaniel/VSCode__devops_scripts/issues"

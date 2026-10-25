@@ -1,6 +1,14 @@
+<p align="center">
+  <img src=".img/social-preview.png" alt="Azure DevOps Overview" width="720">
+</p>
+
 > 🤖 **AI Notice:** Originally written by hand, with love, sweat and an unreasonable amount of `console.log`. Resurrected in 2026 with the help of an AI, which fixed the bugs, deleted the dead code and politely refused to judge the original variable names.
 
 # Azure DevOps Overview
+
+[![Version](https://vsmarketplacebadges.dev/version-short/LemurDaniel.devopsscripts.svg)](https://marketplace.visualstudio.com/items?itemName=LemurDaniel.devopsscripts)
+[![Installs](https://vsmarketplacebadges.dev/installs-short/LemurDaniel.devopsscripts.svg)](https://marketplace.visualstudio.com/items?itemName=LemurDaniel.devopsscripts)
+[![License](https://img.shields.io/github/license/LemurDaniel/VSCode__devops_scripts)](LICENSE)
 
 VSCode integrated overview for managing projects, pipelines and repositories in Azure DevOps:
 
@@ -41,3 +49,7 @@ npm run test:unit
 Press `F5` to start the extension in a new window. The extension runs from the bundle in `dist/`, the launch configuration builds it first. `npm run package` creates the production bundle, `npx @vscode/vsce package` a `.vsix`.
 
 Releases are published by the manually triggered *Node.js CI* workflow, which needs the secret `PUBLISH_PAT` (a Marketplace token).
+
+## Feedback
+
+Found a bug or missing a feature? [Open an issue](https://github.com/LemurDaniel/VSCode__devops_scripts/issues). If the extension is useful to you, a [review on the Marketplace](https://marketplace.visualstudio.com/items?itemName=LemurDaniel.devopsscripts&ssr=false#review-details) helps others find it. ⭐

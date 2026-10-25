@@ -4,6 +4,18 @@ All notable changes to the "devopsscripts" extension will be documented in this 
 
 The format follows [Keep a Changelog](http://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/) (while below 1.0.0, minor/patch bumps may include breaking changes).
 
+## [1.0.2]
+
+### Added
+
+- Own extension icon and a monochrome activity bar icon that follows the VSCode theme.
+- README with banner, badges and a feedback section.
+- Releases are now also created on GitHub (with the `.vsix` attached) by the publish pipeline.
+
+### Changed
+
+- The Microsoft Azure DevOps logo was replaced by an own icon.
+
 ## [1.0.1]
 
 ### Fixed

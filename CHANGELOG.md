@@ -9,7 +9,7 @@ The format follows [Keep a Changelog](http://keepachangelog.com/), versions foll
 ### Added
 
 - Own extension icon and a monochrome activity bar icon that follows the VSCode theme.
-- README with banner, badges and a feedback section.
+- README with banner (marked as AI-generated artwork), badges and a feedback section.
 - Releases are now also created on GitHub (with the `.vsix` attached) by the publish pipeline.
 
 ### Changed

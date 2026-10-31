@@ -9,7 +9,7 @@ extension.js
 webpack.config.js
 jsconfig.json
 package-lock.json
-.eslintrc.json
+eslint.config.js
 .gitignore
 .yarnrc
 **/*.map

@@ -8,7 +8,11 @@ The format follows [Keep a Changelog](http://keepachangelog.com/), versions foll
 
 ### Security
 
-- Dependency updates via `npm audit fix --force`.
+- All `npm audit` findings resolved (0 vulnerabilities).
+- Dev dependencies upgraded: `eslint` 8 → 10, `mocha` 10 → 12, `glob` 8 → 14.
+- `overrides` pin transitive `minimatch` to ^11.0.3 and mocha's `glob` to the root version.
+- ESLint config migrated from `.eslintrc.json` to flat config (`eslint.config.js`).
+- Test runner uses the promise API of `glob`; `@types/glob` removed (glob ships its own types).
 
 ### Changed
 

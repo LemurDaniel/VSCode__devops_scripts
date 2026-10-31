@@ -1,6 +1,35 @@
 name: Node.js CI
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      skip_publish:
+        description: 'Skip publishing to the Marketplace'
+        required: false
+        type: boolean
+        default: true
+
+  push:
+    branches:
+      - main
+    paths:
+      - "extension.js"
+      - "lib/**"
+      - ".resources/**"
+      - "webpack.config.js"
+      - "package.json"
+      - "package-lock.json"
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "extension.js"
+      - "lib/**"
+      - ".resources/**"
+      - "webpack.config.js"
+      - "package.json"
+      - "package-lock.json"
 
 env:
   PUBLISHER: LemurDaniel
@@ -8,9 +37,16 @@ env:
 
 jobs:
   build:
+    # automated_ branches (securityCheck) verify lint, tests and build themselves
+    if: ${{ !contains(github.head_ref, 'automated_') }}
+
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+
+    env:
+      # Push to main always publishes, manual dispatch only with skip_publish=false
+      PUBLISH: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.skip_publish == false)) }}
 
     steps:
       - uses: actions/checkout@v4
@@ -33,23 +69,13 @@ jobs:
           npx --yes @vscode/vsce package --out "devopsscripts-$VERSION.vsix"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
+      - uses: actions/upload-artifact@v4
+        if: env.PUBLISH != 'true'
+        with:
+          name: Upload Extension package
+          path: |
+            ./*.vsix
+
       - name: Publish extension
+        if: env.PUBLISH == 'true'
         run: npx --yes @vscode/vsce publish --packagePath "devopsscripts-${{ steps.package.outputs.version }}.vsix" --pat ${{ env.PAT }}
-
-      - name: Extract release notes from CHANGELOG
-        run: |
-          awk -v h="## [${{ steps.package.outputs.version }}]" '
-            index($0, h) == 1 { found=1; next }
-            found && index($0, "## [") == 1 { exit }
-            found { print }
-          ' CHANGELOG.md > release-notes.md
-
-      - name: Create GitHub release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release create "v${{ steps.package.outputs.version }}" \
-            "devopsscripts-${{ steps.package.outputs.version }}.vsix" \
-            --title "v${{ steps.package.outputs.version }}" \
-            --notes-file release-notes.md \
-            --target "${{ github.sha }}"

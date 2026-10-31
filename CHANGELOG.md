@@ -4,6 +4,14 @@ All notable changes to the "devopsscripts" extension will be documented in this 
 
 The format follows [Keep a Changelog](http://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/) (while below 1.0.0, minor/patch bumps may include breaking changes).
 
+## [Unreleased]
+
+### Changed
+
+- Dependency `@types/vscode` updated from 1.140.0 to 1.144.0.
+- Dependency `webpack` updated from 5.112.0 to 5.112.2.
+- Transitive dependencies updated (`package-lock.json`).
+
 ## [1.0.3]
 
 ### Changed

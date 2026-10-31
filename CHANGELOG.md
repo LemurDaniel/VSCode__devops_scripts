@@ -4,7 +4,15 @@ All notable changes to the "devopsscripts" extension will be documented in this 
 
 The format follows [Keep a Changelog](http://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/) (while below 1.0.0, minor/patch bumps may include breaking changes).
 
-## [Unreleased]
+## [1.0.4]
+
+### Security
+
+- All `npm audit` findings resolved (0 vulnerabilities).
+- Dev dependencies upgraded: `eslint` 8 → 10, `mocha` 10 → 12, `glob` 8 → 14.
+- `overrides` pin transitive `minimatch` to ^11.0.3 and mocha's `glob` to the root version.
+- ESLint config migrated from `.eslintrc.json` to flat config (`eslint.config.js`).
+- Test runner uses the promise API of `glob`; `@types/glob` removed (glob ships its own types).
 
 ### Changed
 

@@ -91,12 +91,17 @@ jobs:
         run: |
           npm version patch --no-git-tag-version
           $version = (Get-Content package.json | ConvertFrom-Json).version
-          $entry = "## [$version]`n`n### Security`n`n- Dependency updates via ``npm audit fix --force``.`n`n"
+          $security = "### Security`n`n- Dependency updates via ``npm audit fix --force``.`n`n"
 
-          # Insert above the latest release, below the file header
+          # An existing [Unreleased] section becomes this version, otherwise insert above the latest release
           $changelog = Get-Content CHANGELOG.md -Raw
-          $index = $changelog.IndexOf("`n## [") + 1
-          Set-Content CHANGELOG.md -Value $changelog.Insert($index, $entry) -NoNewline
+          if ($changelog -match '(?m)^## \[Unreleased\]\r?\n\r?\n') {
+            $changelog = $changelog.Replace($Matches[0], "## [$version]`n`n$security")
+          }
+          else {
+            $changelog = $changelog.Insert($changelog.IndexOf("`n## [") + 1, "## [$version]`n`n$security")
+          }
+          Set-Content CHANGELOG.md -Value $changelog -NoNewline
           "VERSION=$version" >> $env:GITHUB_ENV
 
       - name: Create Pull-Request

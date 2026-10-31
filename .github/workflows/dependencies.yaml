@@ -1,0 +1,64 @@
+name: Update dependencies
+
+on:
+  schedule:
+    - cron: "0 4 * * 0" # Sundays 04:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+
+      - run: npm ci
+
+      # Without --save only package-lock.json changes, the ranges in package.json stay.
+      # This keeps @types/vscode in line with engines.vscode, which vsce checks.
+      - name: Update dependencies (minor + patch)
+        run: |
+          cp package-lock.json "$RUNNER_TEMP/package-lock.old.json"
+          npm update
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet -- package.json package-lock.json; then
+            echo "updated=false" >> "$GITHUB_OUTPUT"
+            echo "Everything is up to date." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "updated=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.changes.outputs.updated == 'true'
+        run: npm run lint
+
+      - if: steps.changes.outputs.updated == 'true'
+        run: npm run test:unit
+
+      - if: steps.changes.outputs.updated == 'true'
+        run: npm run package
+
+      - name: Update CHANGELOG
+        if: steps.changes.outputs.updated == 'true'
+        run: |
+          node .github/scripts/changelog-dependencies.js \
+            "$RUNNER_TEMP/package-lock.old.json" package-lock.json CHANGELOG.md \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit and push
+        if: steps.changes.outputs.updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json CHANGELOG.md
+          git commit -m "Update dependencies"
+          git push

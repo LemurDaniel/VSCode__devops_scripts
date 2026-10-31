@@ -5,7 +5,7 @@
   "author": "LemurDaniel",
   "publisher": "LemurDaniel",
   "icon": ".resources/icon.png",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/LemurDaniel/VSCode__devops_scripts"
@@ -349,9 +349,9 @@
     "@types/node": "^22.20.5",
     "@types/vscode": "^1.77.0",
     "@vscode/test-electron": "^2.2.2",
-    "eslint": "^8.33.0",
-    "glob": "^8.1.0",
-    "mocha": "^10.1.0",
+    "eslint": "^4.0.0",
+    "glob": "^14.0.3",
+    "mocha": "^5.0.5",
     "typescript": "^4.9.4",
     "webpack": "^5.81.0",
     "webpack-cli": "^5.0.2"

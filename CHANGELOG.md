@@ -4,7 +4,11 @@ All notable changes to the "devopsscripts" extension will be documented in this 
 
 The format follows [Keep a Changelog](http://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/) (while below 1.0.0, minor/patch bumps may include breaking changes).
 
-## [Unreleased]
+## [1.0.4]
+
+### Security
+
+- Dependency updates via `npm audit fix --force`.
 
 ### Changed
 

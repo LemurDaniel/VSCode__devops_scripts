@@ -42,7 +42,8 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      # write: push the version tag after publishing
+      contents: write
 
     env:
       # Push to main always publishes, manual dispatch only with skip_publish=false
@@ -79,3 +80,14 @@ jobs:
       - name: Publish extension
         if: env.PUBLISH == 'true'
         run: npx --yes @vscode/vsce publish --packagePath "devopsscripts-${{ steps.package.outputs.version }}.vsix" --pat ${{ env.PAT }}
+
+      - name: Tag version
+        if: env.PUBLISH == 'true'
+        run: |
+          TAG="v${{ steps.package.outputs.version }}"
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+            echo "Tag $TAG already exists, skipping"
+            exit 0
+          fi
+          git tag "$TAG" "$GITHUB_SHA"
+          git push origin "refs/tags/$TAG"

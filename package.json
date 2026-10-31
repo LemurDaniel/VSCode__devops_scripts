@@ -339,7 +339,7 @@
     "package": "webpack --mode production --devtool hidden-source-map",
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "node ./test/runTest.js",
+    "test": "npm run test:unit",
     "package:test": "vsce package --pre-release --out ./package",
     "test:unit": "mocha --ui tdd test/unit"
   },
@@ -348,7 +348,6 @@
     "@types/mocha": "^10.0.1",
     "@types/node": "^22.20.5",
     "@types/vscode": "^1.77.0",
-    "@vscode/test-electron": "^2.2.2",
     "eslint": "^10.14.0",
     "glob": "^14.0.3",
     "globals": "^17.13.0",

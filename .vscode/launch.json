@@ -23,16 +23,6 @@
 			"args": [
 				"--extensionDevelopmentPath=${workspaceFolder}"
 			]
-		},
-		{
-			"name": "Extension Tests",
-			"type": "extensionHost",
-			"request": "launch",
-			"preLaunchTask": "build",
-			"args": [
-				"--extensionDevelopmentPath=${workspaceFolder}",
-				"--extensionTestsPath=${workspaceFolder}/test/suite/index"
-			]
 		}
 	]
 }
